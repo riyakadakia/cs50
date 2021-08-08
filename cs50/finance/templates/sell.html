@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+        <div class="form-group">
+               <fieldset>
+                  <p>
+                     <label>Select list</label>
+                     <select name = "symbol">
+                        {% for row in rows %}
+                            {% if row.symbol !="CASH" %}
+                                <option value ={{row.symbol}}>{{row.symbol}}</option>
+                            i= i+1
+                            {%endif%}
+                        {% endfor %}
+                     </select>
+                  </p>
+               </fieldset>
+            </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="shares" type="text">
+        </div>
+
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}
